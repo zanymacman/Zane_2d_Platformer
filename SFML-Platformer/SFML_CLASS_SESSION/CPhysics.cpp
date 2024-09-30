@@ -215,23 +215,3 @@ void CPhysics::MovementIntergration(std::vector<CObject*> _Objects)
 
 	}
 }
-
-void CPhysics::EmptyPhysics()
-{
-	CObject* tempTilePtr;
-	for (int i = 0; i < m_PhysicsObjects.size(); i++)
-	{
-		tempTilePtr = m_PhysicsObjects[i];
-		m_PhysicsObjects[i] = nullptr;
-		delete tempTilePtr;
-	}
-	m_PhysicsObjects.clear();
-
-	for (int i = 0; i < m_CollisionObjects.size(); i++)
-	{
-		tempTilePtr = m_CollisionObjects[i];
-		m_CollisionObjects[i] = nullptr;
-		delete tempTilePtr;
-	}
-	m_CollisionObjects.clear();
-}

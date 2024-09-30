@@ -14,10 +14,7 @@ public:
 	static const int levelWidth = 20;
 	static const int levelHeight = 10;
 
-	std::vector<CTile*> m_LevelCollisionTiles; // Every tile to be collided with
-	std::vector<CTile*> m_LevelBackgroundTiles; // Tiles to not collide with, are for backhground
-	std::vector<CObject*> g_Objects; // All objects
-	std::vector<CTile*> g_Tile; // All Tiles
+	std::vector<CObject*> m_Objects; // All objects
 
 	//physics and collision vectors
 	CPhysics g_PhysicsHandler;
@@ -30,9 +27,9 @@ public:
 	~CLevel();
 
 	void Loadlevel(std::string _FilePath);
+	void UnloadLevel();
 	void CreateLevel();
 
 	void RenderBackground(sf::RenderWindow* _Window);
 	void RenderForground(sf::RenderWindow* _Window);
-	void UnloadLevel();
 };

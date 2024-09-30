@@ -5,6 +5,7 @@
 
 enum ObjType
 {
+	Spawn,
 	Wall,
 	Platform,
 	MovingPlatform,

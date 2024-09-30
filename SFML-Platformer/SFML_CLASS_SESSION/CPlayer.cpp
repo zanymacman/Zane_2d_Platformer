@@ -106,6 +106,21 @@ bool CPlayer::GetInvul()
 	return m_Invul;
 }
 
+void CPlayer::SetSpawn(sf::Vector2f _SpawnPos)
+{
+	m_PlayerSpawnPos = _SpawnPos;
+}
+
+sf::Vector2f CPlayer::GetSpawn()
+{
+	return m_PlayerSpawnPos;
+}
+
+void CPlayer::Spawn()
+{
+	m_ObjectShape.setPosition(m_PlayerSpawnPos);
+}
+
 void CPlayer::Render(sf::RenderWindow* _Window)
 {
 	_Window->draw(m_ObjectShape);

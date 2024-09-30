@@ -3,8 +3,10 @@
 CObject::CObject(sf::Vector2f _Size, sf::Vector2f _Position, ObjType _Type, bool _Dynamic)
 {
 	m_ObjectShape.setSize(_Size);
-	m_ObjectShape.setFillColor(sf::Color::Transparent);
 	m_ObjectShape.setPosition(_Position);
+	m_ObjectShape.setFillColor(sf::Color::Transparent);
+	m_ObjectShape.setOutlineThickness(-5);
+	m_ObjectShape.setOutlineColor(sf::Color::Transparent);
 	m_Dynamic = _Dynamic;
 	m_ObjectType = _Type;
 

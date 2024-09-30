@@ -37,6 +37,10 @@ public:
 	void SetInvul();
 	bool GetInvul();
 
+	void SetSpawn(sf::Vector2f _SpawnPos);
+	sf::Vector2f GetSpawn();
+	void Spawn();
+
 	void Render(sf::RenderWindow* _Window) override;
 	void Update(sf::RenderWindow* _Window) override;
 
@@ -45,7 +49,7 @@ public:
 private:
 	float m_FallScaler = 2.5f;
 	float m_PlayerSpeed = 3;
-	float m_PlayerJumpheight = 5;
+	float m_PlayerJumpheight = 10;
 	bool m_Grounded = false;
 	float m_LastYVelocity = 0;
 	bool m_FacingRight = true;
@@ -55,4 +59,5 @@ private:
 	int m_IFrames = 30;
 	int m_IFramesMax = 30;
 	bool m_Invul = false;
+	sf::Vector2f m_PlayerSpawnPos = sf::Vector2f(20, 20);
 };

@@ -2,9 +2,9 @@ xxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxx
 xxxxooooxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxx
-xxxxxxxxx---ooooooxx
-xxxxxx<ooxxxxxxxxxxx
-x_xxxxxxxxxxxxxAxxxx
-xo>xxxxxxxxx^^xxxxox
+xxxxxxxxx---oooooo>x
+xxxxxxxooxxxxxxxxxxx
+xSx__xxxxxxxxxxAxxxx
+xoxxxxxxxxx^^xxx<ox
 xoooooooooooooooooox
 xxxxxxxxxxxxxxxxxxxx
