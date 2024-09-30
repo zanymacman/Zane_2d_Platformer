@@ -171,6 +171,18 @@ void CLevel::CreateLevel()
 				m_Objects.push_back(newTile1);
 				newTile1->SetTexture("Sprites/LevelEndV1.png");
 			}
+			if (levelArray[x][y] == '1')
+			{
+				CTile* newTile = new CTile(sf::Vector2f(64, 64), sf::Vector2f((x * 64), (y * 64)), Background, false);
+				newTile->m_ObjectShape.setFillColor(sf::Color::White);
+				newTile->m_ObjectShape.setOutlineColor(sf::Color::Transparent);
+				m_Objects.push_back(newTile);
+				newTile->SetTexture("Sprites/SkyV1.png");
+
+				CEnemy* newEnemy = new CEnemy(sf::Vector2f(32, 32), sf::Vector2f(x * 64, y * 64), EWalker, true);
+				newEnemy->SetTrackedPlayer(m_PlayerRef);
+				m_Objects.push_back(newEnemy);
+			}
 		}
 	}
 }
@@ -195,6 +207,13 @@ void CLevel::RenderBackground(sf::RenderWindow* _Window)
 
 void CLevel::RenderForground(sf::RenderWindow* _Window)
 {
+	for (int i = 0; i < m_Objects.size(); i++)
+	{
+		if (m_Objects[i]->m_ObjectType == Arrow)//Draw Arrows in front of walls and other platforms, so they stick in nicely
+		{
+			_Window->draw(m_Objects[i]->m_ObjectShape);
+		}
+	}
 	for (int i = 0; i < m_Objects.size(); i++)
 	{
 		if (m_Objects[i]->m_ObjectType != Background and m_Objects[i]->m_ObjectType != Spawn)//then draw everything else

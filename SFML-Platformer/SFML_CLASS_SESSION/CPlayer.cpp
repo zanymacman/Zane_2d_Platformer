@@ -29,10 +29,13 @@ void CPlayer::Input()
 	{
 		m_ObjectVelocity.y = -m_PlayerSpeed;
 	}
-	/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))   ---   player down move discabled. may return if needed
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))   //   ---   player down move discabled. may return if needed
 	{
-		m_ObjectVelocity.y = m_PlayerSpeed;
-	}*/
+		if(!m_Dynamic)
+		{
+			m_ObjectVelocity.y = m_PlayerSpeed;
+		}
+	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		m_FacingRight = false;
@@ -47,15 +50,16 @@ void CPlayer::Input()
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		if (m_Grounded)
+		Jump();
+		/*if (m_Grounded)
 		{
-			Jump();
+			
 			SetGrounded(false);
 		}
 		else
 		{
 			std::cout << " NOT GROUNDED!!!\n";
-		}
+		}*/
 	}
 }
 
@@ -106,6 +110,11 @@ bool CPlayer::GetInvul()
 	return m_Invul;
 }
 
+void CPlayer::ToggleInvul()
+{
+	m_TrueInvul = !m_TrueInvul;
+}
+
 void CPlayer::SetSpawn(sf::Vector2f _SpawnPos)
 {
 	m_PlayerSpawnPos = _SpawnPos;
@@ -139,15 +148,19 @@ void CPlayer::Update(sf::RenderWindow* _Window)
 		m_YVelocity *= 1 + m_FallScaler * CHelper::getInstance().m_DeltaTme;
 	}
 
-	if (m_IFrames < m_IFramesMax)
+	if(!m_TrueInvul)
 	{
-		m_IFrames++;
+		if (m_IFrames < m_IFramesMax)
+		{
+			m_IFrames++;
+		}
+		else//reset color with iframe end
+		{
+			m_ObjectShape.setFillColor(sf::Color::White);
+			m_Invul = false;
+		}
 	}
-	else//reset color with iframe end
-	{
-		m_ObjectShape.setFillColor(sf::Color::White);
-		m_Invul = false;
-	}
+
 	if (m_PlayerLives <= 0)
 	{
 		ReSpawn();

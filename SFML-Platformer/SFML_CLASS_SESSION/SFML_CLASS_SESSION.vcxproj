@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CArrow.cpp" />
+    <ClCompile Include="CButton.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="CUIManager.cpp" />
@@ -157,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CArrow.h" />
+    <ClInclude Include="CButton.h" />
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CHelper.h" />
     <ClInclude Include="CCollisionHandler.h" />
