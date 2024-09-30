@@ -17,7 +17,8 @@ enum ObjType
 	EWalker,
 	Arrow,
 	ArrowPickup,
-	LifePickup
+	LifePickup,
+	LevelEnd
 };
 
 class CObject

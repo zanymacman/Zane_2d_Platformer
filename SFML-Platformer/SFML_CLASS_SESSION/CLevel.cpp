@@ -165,7 +165,11 @@ void CLevel::CreateLevel()
 				m_Objects.push_back(newTile);
 				newTile->SetTexture("Sprites/SkyV1.png");
 
-
+				CTile* newTile1 = new CTile(sf::Vector2f(64, 64), sf::Vector2f((x * 64), (y * 64)), LevelEnd, false);
+				newTile1->m_ObjectShape.setFillColor(sf::Color::White);
+				newTile1->m_ObjectShape.setOutlineColor(sf::Color::Transparent);
+				m_Objects.push_back(newTile1);
+				newTile1->SetTexture("Sprites/LevelEndV1.png");
 			}
 		}
 	}

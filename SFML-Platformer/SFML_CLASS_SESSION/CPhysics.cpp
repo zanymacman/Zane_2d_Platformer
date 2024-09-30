@@ -143,6 +143,12 @@ void CPhysics::CollisionIntergration(std::vector<CObject*> _Objects)//detect if 
 								_Objects[j]->m_ObjectShape.move(0, 500);//teleport below the level
 							}
 						}
+						else if (_Objects[j]->m_ObjectType == LevelEnd)
+						{
+							//unload level
+							//load new level
+							//respawn player
+						}
 						break;
 
 					case Arrow:
