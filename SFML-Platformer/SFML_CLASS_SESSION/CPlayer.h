@@ -39,7 +39,7 @@ public:
 
 	void SetSpawn(sf::Vector2f _SpawnPos);
 	sf::Vector2f GetSpawn();
-	void Spawn();
+	void ReSpawn();
 
 	void Render(sf::RenderWindow* _Window) override;
 	void Update(sf::RenderWindow* _Window) override;

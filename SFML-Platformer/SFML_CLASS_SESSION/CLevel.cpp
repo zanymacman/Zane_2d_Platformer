@@ -157,6 +157,16 @@ void CLevel::CreateLevel()
 				newTile1->SetTexture("Sprites/SpawnV1.png");
 				m_PlayerRef->SetSpawn(newTile1->m_ObjectShape.getPosition());
 			}
+			if (levelArray[x][y] == 'E')
+			{
+				CTile* newTile = new CTile(sf::Vector2f(64, 64), sf::Vector2f((x * 64), (y * 64)), Background, false);
+				newTile->m_ObjectShape.setFillColor(sf::Color::White);
+				newTile->m_ObjectShape.setOutlineColor(sf::Color::Transparent);
+				m_Objects.push_back(newTile);
+				newTile->SetTexture("Sprites/SkyV1.png");
+
+
+			}
 		}
 	}
 }
@@ -165,7 +175,14 @@ void CLevel::RenderBackground(sf::RenderWindow* _Window)
 {
 	for (int i = 0; i < m_Objects.size(); i++)
 	{
-		if(m_Objects[i]->m_ObjectType == Background)
+		if(m_Objects[i]->m_ObjectType == Background)//draw the background
+		{
+			_Window->draw(m_Objects[i]->m_ObjectShape);
+		}
+	}
+	for (int i = 0; i < m_Objects.size(); i++)
+	{
+		if (m_Objects[i]->m_ObjectType == Spawn)//Then Draw the Spawnpoint
 		{
 			_Window->draw(m_Objects[i]->m_ObjectShape);
 		}
@@ -176,7 +193,7 @@ void CLevel::RenderForground(sf::RenderWindow* _Window)
 {
 	for (int i = 0; i < m_Objects.size(); i++)
 	{
-		if (m_Objects[i]->m_ObjectType != Background)
+		if (m_Objects[i]->m_ObjectType != Background and m_Objects[i]->m_ObjectType != Spawn)//then draw everything else
 		{
 			_Window->draw(m_Objects[i]->m_ObjectShape);
 		}
@@ -185,7 +202,6 @@ void CLevel::RenderForground(sf::RenderWindow* _Window)
 
 void CLevel::UnloadLevel()
 {
-	CTile* tempTilePtr;
 	CObject* tempObjectPtr;
 
 	for (int i = 0; i < m_Objects.size(); i++)

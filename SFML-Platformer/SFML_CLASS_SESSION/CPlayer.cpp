@@ -116,8 +116,11 @@ sf::Vector2f CPlayer::GetSpawn()
 	return m_PlayerSpawnPos;
 }
 
-void CPlayer::Spawn()
+void CPlayer::ReSpawn()
 {
+	m_PlayerLives = 3;
+	m_ArrowCount = 3;
+	m_ObjectShape.setFillColor(sf::Color::White);
 	m_ObjectShape.setPosition(m_PlayerSpawnPos);
 }
 
@@ -144,6 +147,10 @@ void CPlayer::Update(sf::RenderWindow* _Window)
 	{
 		m_ObjectShape.setFillColor(sf::Color::White);
 		m_Invul = false;
+	}
+	if (m_PlayerLives <= 0)
+	{
+		ReSpawn();
 	}
 }
 

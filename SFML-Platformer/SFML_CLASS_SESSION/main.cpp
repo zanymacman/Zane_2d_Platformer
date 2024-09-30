@@ -21,7 +21,7 @@ int main()
     bgm.setVolume(100.0f);
     
     //create player
-    CPlayer g_Player(sf::Vector2f(44, 64), sf::Vector2f(100, 200), Player, false);
+    CPlayer g_Player(sf::Vector2f(44, 64), sf::Vector2f(100, 200), Player, true);
     newLevel.m_Objects.push_back(&g_Player);
     newLevel.m_PlayerRef = &g_Player;
     newLevel.g_PhysicsHandler.SetTrackedPlayer(&g_Player);
@@ -40,7 +40,7 @@ int main()
 
     //load level 1
     newLevel.Loadlevel("Levels/Level1.txt");
-    //g_Player.Spawn();
+    g_Player.ReSpawn();
 
     while (window.isOpen())
     {
