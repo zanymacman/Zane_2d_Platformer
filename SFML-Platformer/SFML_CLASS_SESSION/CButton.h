@@ -17,4 +17,3 @@ private:
 	sf::RectangleShape m_ShapeElement;
 	sf::Text m_TextElement;
 };
-

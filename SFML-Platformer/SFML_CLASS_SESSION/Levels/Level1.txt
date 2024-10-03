@@ -1,10 +1,9 @@
-xxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxx
-xxxxooooxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxx
-xxxxxxxxx---oooooo>x
-xxxxxxxooxxxxxxxxxxx
-xSx__xxxx1xxxxxAxxEx
-xoxxxxxxxxx^^xxxx<ox
-xoooooooooooooooooox
-xxxxxxxxxxxxxxxxxxxx
+                          o             
+                          o             
+                          o             
+                          o             
+                   oooo---oooooooooooooo
+                 - o  o                o
+               -   o  o                o
+      S      -     o  o           E    o
+oooooooooooooooooooooooooooooooooooooooo

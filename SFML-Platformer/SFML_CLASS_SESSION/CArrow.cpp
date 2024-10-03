@@ -5,7 +5,8 @@ CArrow::CArrow(sf::Vector2f _Size, sf::Vector2f _Position, ObjType _Type, bool _
 	m_ArrowShape.setSize(_Size);
 	m_ArrowShape.setPosition(_Position);
 
-	m_ObjectShape.setFillColor(sf::Color(156, 111, 39));
+	m_ObjectShape.setFillColor(sf::Color::White);
+	//SetTexture("Sprites/ArrowV1.png");
 
 	m_ArrowCollider = new sf::FloatRect();
 	m_ArrowCollider->left = m_ArrowShape.getGlobalBounds().left;

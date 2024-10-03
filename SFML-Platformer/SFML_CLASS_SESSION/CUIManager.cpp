@@ -79,3 +79,13 @@ void CUIManager::DrawPlayerArrowStock(sf::RenderWindow* _Window)
 	if (m_TrackedPlayer->GetArrowCount() > 1) { _Window->draw(m_Arrow2); }
 	if (m_TrackedPlayer->GetArrowCount() > 2) { _Window->draw(m_Arrow3); }
 }
+
+void CUIManager::MoveUI(sf::Vector2f _MoveUIVec)
+{
+	m_Life1.move(_MoveUIVec);
+	m_Life2.move(_MoveUIVec);
+	m_Life3.move(_MoveUIVec);
+	m_Arrow1.move(_MoveUIVec);
+	m_Arrow2.move(_MoveUIVec);
+	m_Arrow3.move(_MoveUIVec);
+}

@@ -30,4 +30,6 @@ public:
 	void DrawPlayerHealth(sf::RenderWindow* _Window);
 
 	void DrawPlayerArrowStock(sf::RenderWindow* _Window);
+
+	void MoveUI(sf::Vector2f _MoveUIVec);
 };

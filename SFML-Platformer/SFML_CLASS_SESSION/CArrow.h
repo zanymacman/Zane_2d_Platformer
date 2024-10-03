@@ -12,5 +12,4 @@ private:
 
 	sf::RectangleShape m_ArrowShape;
 	sf::FloatRect* m_ArrowCollider;
-
 };

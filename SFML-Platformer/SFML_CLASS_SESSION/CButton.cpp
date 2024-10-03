@@ -8,7 +8,7 @@ CButton::CButton(sf::Vector2f _Pos, sf::Font* _FontRef, sf::Vector2f _Size, std:
 
 	m_TextElement.setFont(*_FontRef);
 	m_TextElement.setCharacterSize(30);
-	m_TextElement.setFillColor(sf::Color::White);
+	m_TextElement.setFillColor(sf::Color::Black);
 	m_TextElement.setStyle(sf::Text::Bold | sf::Text::Underlined);
 	m_TextElement.setOrigin(50, 20);
 	m_TextElement.setString(_Text);

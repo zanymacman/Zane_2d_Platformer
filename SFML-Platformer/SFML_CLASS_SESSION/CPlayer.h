@@ -38,6 +38,9 @@ public:
 	bool GetInvul();
 	void ToggleInvul();
 
+	void YHurtReact();
+	void XHurtReact();
+
 	void SetSpawn(sf::Vector2f _SpawnPos);
 	sf::Vector2f GetSpawn();
 	void ReSpawn();
@@ -50,10 +53,9 @@ public:
 private:
 	float m_FallScaler = 2.5f;
 	float m_PlayerSpeed = 3;
-	float m_PlayerJumpheight = 10;
+	float m_PlayerJumpheight = 5;
 	int m_JumpCoolDown = 0;
 	int m_JumpCoolDownMax = 20;
-	bool m_Grounded = false;
 	float m_LastYVelocity = 0;
 	bool m_FacingRight = true;
 

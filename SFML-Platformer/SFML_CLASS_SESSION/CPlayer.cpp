@@ -6,12 +6,12 @@ CPlayer::CPlayer(sf::Vector2f _Size, sf::Vector2f _Position, ObjType _Type, bool
 	m_ObjectShape.setFillColor(sf::Color::White);
 	m_ObjectTexture.loadFromFile("Sprites/SpriteSheet.png");
 	m_ObjectShape.setTexture(&m_ObjectTexture);
-	m_ObjectShape.setTextureRect(sf::IntRect(84, 0, 39, 65));
+	m_ObjectShape.setTextureRect(sf::IntRect(84, 0, 39, 57));
 
 	m_AnimationRect.top = 0;
 	m_AnimationRect.left = 84;
 	m_AnimationRect.width = 39;
-	m_AnimationRect.height = 65;
+	m_AnimationRect.height = 57;
 
 	m_ObjectType = Player;
 }
@@ -25,24 +25,34 @@ void CPlayer::Input()
 	m_ObjectVelocity = sf::Vector2f(0, 0);
 	m_CurrentPlayerAnimationState = Idle;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) or sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		m_ObjectVelocity.y = -m_PlayerSpeed;
+		if (!m_Dynamic)
+		{
+			m_ObjectVelocity.y = -m_PlayerSpeed;
+		}
+		else
+		{
+			if (GetGrounded())
+			{
+				Jump();
+			}
+		}
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))   //   ---   player down move discabled. may return if needed
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) or sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) //   ---   player down move discabled. may return if needed
 	{
 		if(!m_Dynamic)
 		{
 			m_ObjectVelocity.y = m_PlayerSpeed;
 		}
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) or sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		m_FacingRight = false;
 		m_CurrentPlayerAnimationState = Moving_L;
 		m_ObjectVelocity.x = -m_PlayerSpeed;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) or sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
 	{
 		m_FacingRight = true;
 		m_CurrentPlayerAnimationState = Moving_R;
@@ -50,28 +60,22 @@ void CPlayer::Input()
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		Jump();
-		/*if (m_Grounded)
+		if (GetGrounded())
 		{
-			
-			SetGrounded(false);
+			Jump();
 		}
-		else
-		{
-			std::cout << " NOT GROUNDED!!!\n";
-		}*/
 	}
 }
 
 void CPlayer::Jump()
 {
-	m_ObjectShape.move(0, -0.2);
+	m_ObjectShape.move(0, -0.8);
 	m_YVelocity = -m_PlayerJumpheight;
 }
 
 CArrow* CPlayer::Shoot()
 {
-	CArrow* newArrow = new CArrow(sf::Vector2f(64, 12), m_ObjectShape.getPosition(), Arrow, true, m_FacingRight);
+	CArrow* newArrow = new CArrow(sf::Vector2f(64, 12), sf::Vector2f(m_ObjectShape.getPosition().x, m_ObjectShape.getPosition().y + 15), Arrow, true, m_FacingRight);
 	return newArrow;
 }
 
@@ -113,6 +117,27 @@ bool CPlayer::GetInvul()
 void CPlayer::ToggleInvul()
 {
 	m_TrueInvul = !m_TrueInvul;
+}
+
+void CPlayer::YHurtReact()
+{
+	m_ObjectShape.move(0, -0.8);
+	m_YVelocity = -m_PlayerJumpheight/2;
+}
+
+void CPlayer::XHurtReact()
+{
+	if (m_FacingRight)
+	{
+		m_ObjectShape.move(-5, -0.8);
+		m_YVelocity = -m_PlayerJumpheight / 2;
+	}
+	else
+	{
+		m_ObjectShape.move(5, -0.8);
+		m_YVelocity = -m_PlayerJumpheight / 2;
+	}
+	
 }
 
 void CPlayer::SetSpawn(sf::Vector2f _SpawnPos)

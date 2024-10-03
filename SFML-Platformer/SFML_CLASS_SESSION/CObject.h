@@ -13,6 +13,7 @@ enum ObjType
 	LWallSpike,
 	RWallSpike,
 	Background,
+	Box,
 	Player,
 	EWalker,
 	Arrow,
