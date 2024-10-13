@@ -107,14 +107,14 @@ void CLevel::DrawLevel(sf::RenderWindow* _Window)
 {
 	for (int i = 0; i < m_Backgrounds.size(); i++)//draw background
 	{
-		_Window->draw(m_Backgrounds[i]->m_ObjectShape);
+		m_Backgrounds[i]->Render(_Window);
 	}
 	for (int i = 0; i < m_Towers.size(); i++)//draw Towers
 	{
-		_Window->draw(m_Towers[i]->m_ObjectShape);
+		m_Towers[i]->Render(_Window);
 	}
 	for (int i = 0; i < m_Enemies.size(); i++)//draw Enemies
 	{
-		_Window->draw(m_Enemies[i]->m_ObjectShape);
+		m_Enemies[i]->Render(_Window);
 	}
 }

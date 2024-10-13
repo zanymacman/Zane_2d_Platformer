@@ -1,7 +1,10 @@
 #pragma once
-class CTower
+#include "CObject.h"
+class CTower : public CObject
 {
 public:
-	sf::RectangleShape m_ObjectShape;
+	
+	CTower();
+	CTower(sf::Vector2f _Size, sf::Vector2f _Position);
+	~CTower();
 };
-

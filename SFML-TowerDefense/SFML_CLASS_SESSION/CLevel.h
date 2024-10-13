@@ -26,7 +26,7 @@ public:
 	std::vector<CEnemy*> m_Enemies;
 	std::vector<CBackground*> m_Backgrounds;
 
-private:
+protected:
 	static const int LevelWidth = 20;
 	static const int LevelHeight = 20;
 

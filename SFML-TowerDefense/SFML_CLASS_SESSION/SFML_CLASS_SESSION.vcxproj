@@ -24,6 +24,7 @@
     <ProjectGuid>{ecb4a914-b808-4148-bc86-993c6a83ca36}</ProjectGuid>
     <RootNamespace>SFMLCLASSSESSION</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>SFML_TOWER_DEFENCE</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -148,6 +149,7 @@
     <ClCompile Include="CBackground.cpp" />
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CLevel.cpp" />
+    <ClCompile Include="CObject.cpp" />
     <ClCompile Include="CTower.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -155,6 +157,7 @@
     <ClInclude Include="CBackground.h" />
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CLevel.h" />
+    <ClInclude Include="CObject.h" />
     <ClInclude Include="CTimeKeeper.h" />
     <ClInclude Include="CTower.h" />
   </ItemGroup>
