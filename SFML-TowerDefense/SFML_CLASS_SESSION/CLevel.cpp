@@ -92,7 +92,7 @@ void CLevel::CreateLevel()//make the level from x/y grid
 				newPath->SetTexture("Sprites/FlagV1.png");
 				std::cout << newPath->GetPath() << std::endl;
 
-				if (levelArray[x][y] == '1')
+				if (levelArray[x][y] == '1')//set the level spawn to the first of the path points
 				{
 					SetLevelSpawn(sf::Vector2f(x * 64, y * 64));
 				}
@@ -153,7 +153,28 @@ void CLevel::DrawLevel(sf::RenderWindow* _Window)
 	}
 }
 
-void CLevel::SpawnEnemy(float _Speed, int _Hp)
+void CLevel::SpawnEnemy(EnemyType _Type)
 {
-
+	CEnemy* newEnemy = new CEnemy;
+	switch (_Type)
+	{
+	case Walker:
+		newEnemy->SetHp(5);
+		newEnemy->SetSpeed(5);
+		newEnemy->GetShape().setPosition(m_LevelSpawn);
+		newEnemy->GetShape().setSize(sf::Vector2f(32, 32));
+		break;
+	case Runner:
+		newEnemy->SetHp(2);
+		newEnemy->SetSpeed(7);
+		newEnemy->GetShape().setPosition(m_LevelSpawn);
+		newEnemy->GetShape().setSize(sf::Vector2f(16, 16));
+		break;
+	case Tank:
+		newEnemy->SetHp(15);
+		newEnemy->SetSpeed(2);
+		newEnemy->GetShape().setPosition(m_LevelSpawn);
+		newEnemy->GetShape().setSize(sf::Vector2f(60, 60));
+		break;
+	}
 }

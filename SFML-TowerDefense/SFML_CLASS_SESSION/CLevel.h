@@ -27,7 +27,7 @@ public:
 
 	void DrawLevel(sf::RenderWindow* _Window);
 
-	void SpawnEnemy(float _Speed, int _Hp);
+	void SpawnEnemy(EnemyType _Type);
 
 	//vectors to use for collisions, pathing, and level loading
 	std::vector<CWall*> m_Walls;

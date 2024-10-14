@@ -1,7 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <cmath>
-#include "CTimeKeeper.h" 
 #include "CLevel.h"
 
 int main()
@@ -45,7 +44,7 @@ int main()
                 }
                 if (event.key.code == sf::Keyboard::Space)
                 {
-
+                    MainLevel.SpawnEnemy(Walker);
                 }
             }
             if (event.type == sf::Event::Resized)//if the Window is resized

@@ -150,6 +150,7 @@
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CLevel.cpp" />
     <ClCompile Include="CMovementIntergration.cpp" />
+    <ClCompile Include="CMovementManager.cpp" />
     <ClCompile Include="CObject.cpp" />
     <ClCompile Include="CTower.cpp" />
     <ClCompile Include="CWall.cpp" />
@@ -160,6 +161,7 @@
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CLevel.h" />
     <ClInclude Include="CMovementIntergration.h" />
+    <ClInclude Include="CMovementManager.h" />
     <ClInclude Include="CObject.h" />
     <ClInclude Include="CTimeKeeper.h" />
     <ClInclude Include="CTower.h" />
