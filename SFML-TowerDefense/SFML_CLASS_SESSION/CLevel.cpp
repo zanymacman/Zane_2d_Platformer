@@ -58,13 +58,12 @@ void CLevel::UnloadLevel()//iterate through each array and clear them
 	m_Towers.clear();
 
 	CBackground* tempBackgroundPtr;
-	for (int i = 0; i < m_Backgrounds.size(); i++)//clear Backgrounds Vector
+	for (int i = 0; i < 10; i++)//clear Backgrounds Array
 	{
-		tempBackgroundPtr = m_Backgrounds[i];
-		m_Backgrounds[i] = nullptr;
+		tempBackgroundPtr = m_Paths[i];
+		m_Paths[i] = nullptr;
 		delete tempBackgroundPtr;
-	}
-	m_Backgrounds.clear();
+	};
 }
 
 void CLevel::CreateLevel()//make the level from x/y grid
@@ -73,9 +72,30 @@ void CLevel::CreateLevel()//make the level from x/y grid
 	{
 		for (int x = 0; x < LevelWidth; x++)
 		{
-			if (levelArray[x][y] == ' ')
+			if (levelArray[x][y] == 'x')//Create a wall that can't be built on
 			{
-				CBackground* newBackground = new CBackground();
+				CWall* newWall = new CWall(sf::Vector2f(64, 64), sf::Vector2f(x * 64, y * 64));
+				newWall->GetShape().setFillColor(sf::Color::White);
+				newWall->GetShape().setOutlineColor(sf::Color::Transparent);
+				m_Walls.push_back(newWall);
+				newWall->SetTexture("Sprites/WallV1.png");
+			}
+			if (levelArray[x][y] == '1' || levelArray[x][y] == '2' || levelArray[x][y] == '3' || levelArray[x][y] == '4' || levelArray[x][y] == '5' || levelArray[x][y] == '6' || levelArray[x][y] == '7' || levelArray[x][y] == '8' || levelArray[x][y] == '9')
+				//create the path and incriment its number, then increase the level path numbers and add it to the path array
+			{
+				m_PathNum++;
+				CBackground* newPath = new CBackground(sf::Vector2f(64, 64), sf::Vector2f(x * 64, y * 64));
+				newPath->GetShape().setFillColor(sf::Color::White);
+				newPath->GetShape().setOutlineColor(sf::Color::Transparent);
+				newPath->SetPath(levelArray[x][y] - '0');//set the path number to be the current read number (char of x/y converted to int by subtracting the vlaye of 0)
+				m_Paths.push_back(newPath);//set the path in the correct order, so they can be read sequentially
+				newPath->SetTexture("Sprites/FlagV1.png");
+				std::cout << newPath->GetPath() << std::endl;
+
+				if (levelArray[x][y] == '1')
+				{
+					SetLevelSpawn(sf::Vector2f(x * 64, y * 64));
+				}
 			}
 		}
 	}
@@ -103,11 +123,21 @@ void CLevel::SetCurrentLevel(int _LevelID)//set currnet level id
 	m_CurrentLevelID = _LevelID;
 }
 
+sf::Vector2f CLevel::GetLevelSpawn()
+{
+	return m_LevelSpawn;
+}
+
+void CLevel::SetLevelSpawn(sf::Vector2f _NewSpawn)
+{
+	m_LevelSpawn = _NewSpawn;
+}
+
 void CLevel::DrawLevel(sf::RenderWindow* _Window)
 {
-	for (int i = 0; i < m_Backgrounds.size(); i++)//draw background
+	for (int i = 0; i < m_Paths.size(); i++)//draw background
 	{
-		m_Backgrounds[i]->Render(_Window);
+		m_Paths[i]->Render(_Window);
 	}
 	for (int i = 0; i < m_Towers.size(); i++)//draw Towers
 	{
@@ -117,4 +147,13 @@ void CLevel::DrawLevel(sf::RenderWindow* _Window)
 	{
 		m_Enemies[i]->Render(_Window);
 	}
+	for (int i = 0; i < m_Walls.size(); i++)//draw Walls
+	{
+		m_Walls[i]->Render(_Window);
+	}
+}
+
+void CLevel::SpawnEnemy(float _Speed, int _Hp)
+{
+
 }

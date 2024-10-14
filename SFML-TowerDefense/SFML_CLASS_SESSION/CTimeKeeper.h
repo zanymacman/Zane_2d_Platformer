@@ -14,7 +14,6 @@ public:
 	//this also helps it be singleton
 	static CTimeKeeper& getInstance() { static CTimeKeeper instance; return instance; }
 
-	float m_GravityValue = 9.81f;
 	sf::Clock GlobalClock;
 	float m_DeltaTme = 0.0f;
 

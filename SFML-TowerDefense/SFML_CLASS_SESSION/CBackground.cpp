@@ -12,3 +12,13 @@ CBackground::CBackground(sf::Vector2f _Size, sf::Vector2f _Position) : CObject(_
 CBackground::~CBackground()
 {
 }
+
+int CBackground::GetPath()
+{
+	return m_Path;
+}
+
+void CBackground::SetPath(int _pathNum)
+{
+	m_Path = _pathNum;
+}

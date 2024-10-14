@@ -2,6 +2,7 @@
 #include <SFML/Audio.hpp>
 #include <cmath>
 #include "CTimeKeeper.h" 
+#include "CLevel.h"
 
 int main()
 {
@@ -10,18 +11,25 @@ int main()
     UIFont.loadFromFile("Fonts/LEMONMILK-Regular.otf");
 
     // -- Main Window -- //
-    sf::RenderWindow MainWindow(sf::VideoMode(1280, 720), "2D Platformer");
+    sf::RenderWindow MainWindow(sf::VideoMode(900, 900), "2D Platformer");
     MainWindow.setFramerateLimit(60);
     // -- Main Window -- //
 
     // -- Game View -- //
-    sf::View MainCamera(sf::FloatRect(0.0f, 0.0f, 1280.0f, 720.0f));
+    sf::View MainCamera(sf::FloatRect(0.0f, 0.0f, 900.0f, 900.0f));
     MainWindow.setView(MainCamera);
     MainCamera.setViewport(sf::FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
     MainWindow.setView(MainWindow.getDefaultView());
     float fCameraMoveX = 0.0f;
     // -- Game View -- //
 
+    // -- Load Test Level -- //
+    CLevel MainLevel;
+    MainLevel.Loadlevel("Levels/Level1.txt");
+    // -- Load Test Level -- //
+
+
+    // -- Main Game Loop in Main Window -- //
     while (MainWindow.isOpen())
     {
         sf::Event event;
@@ -34,6 +42,10 @@ int main()
                 if (event.key.code == sf::Keyboard::Escape)
                 {
                     MainWindow.close();
+                }
+                if (event.key.code == sf::Keyboard::Space)
+                {
+
                 }
             }
             if (event.type == sf::Event::Resized)//if the Window is resized
@@ -48,13 +60,18 @@ int main()
         //Reset Main Window
         MainWindow.clear();
 
+        //Movement lets GO
+        CMovementIntergration::getInstance().Movement(MainLevel.m_Enemies);
+
         //Set camera to be drawn too.
         MainWindow.setView(MainCamera);
+
+        //Draw Things
+        MainLevel.DrawLevel(&MainWindow);
 
         //Draw Window
         MainWindow.display();
     }
-
-    system("pause");
+    // -- End of Main Game Loop -- //
     return 0;
 }

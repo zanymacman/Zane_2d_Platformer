@@ -8,7 +8,8 @@ public:
 	CBackground(sf::Vector2f _Size, sf::Vector2f _Position);
 	~CBackground();
 
+	int GetPath();
+	void SetPath(int _pathNum);
 protected:
-	bool m_Path;
+	int m_Path = 0;
 };
-

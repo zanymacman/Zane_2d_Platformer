@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
+#include "CTimeKeeper.h"
 
 class CObject
 {
@@ -15,9 +15,12 @@ public:
 	virtual void SetTexture(std::string _FilePath);//set texture override to load and then apply texture properly
 
 	//getters and setters
-	sf::RectangleShape GetShape();//shape is set at compile time, no need for setter
+	sf::RectangleShape GetShape();//shape is set on creation, no need for setter
 	sf::Vector2f GetVelocity();
 	void SetVelocity(sf::Vector2f _Velocity);
+
+	//placement over wall checking
+	virtual bool IsWall();
 
 protected:
 	sf::RectangleShape m_ObjectShape;
@@ -26,4 +29,3 @@ protected:
 	sf::Texture m_ObjectTexture;
 	sf::Sprite m_ObjectSprite;
 };
-
